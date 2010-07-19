@@ -8,11 +8,11 @@ Usage
 -----
 
 <code>
-$.jsonml(JSON.parse('["span", { "class" : "code-example-third" }, "Third"]')).abbendTo(document.body);
+$.jsonml(JSON.parse('["span", { "class" : "code-example-third" }, "Third"]')).appendTo(document.body);
 </code>
 
 You can also use this method to create DOM tree in a different document:
 
 <code>
-$.jsonml(JSON.parse('["span", { "style" : "background-color:maroon" }, "\u00A9"]', otherDoc)).abbendTo(otherDoc.body);
+$.jsonml(JSON.parse('["span", { "style" : "background-color:maroon" }, "\u00A9"]', otherDoc)).appendTo(otherDoc.body);
 </code>
