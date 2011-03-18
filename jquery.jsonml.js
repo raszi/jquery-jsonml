@@ -60,7 +60,12 @@
           var $node = $.jsonml(jsonML[i], ownerDoc);
 
           try {
-            $node.appendTo($item);
+            if ($.browser.msie && $node.is("object")) {
+                var object = $item.get(0);
+                object.innerHTML = object.innerHTML + $node.get(0).outerHTML;
+            } else {
+              $node.appendTo($item);
+            }
           } catch (e) {
             throw "Could not insert " + $node.get(0).nodeName + " to " + $item.get(0).nodeName + ": " + e;
           }
