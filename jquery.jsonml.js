@@ -53,7 +53,13 @@
         }
 
         for (var i = start; i < length; i++) {
-          $.jsonml(jsonML[i], ownerDoc).appendTo($item);
+          var $node = $.jsonml(jsonML[i], ownerDoc);
+
+          try {
+            $node.appendTo($item);
+          } catch (e) {
+            throw "Could not insert " + $node.get(0).nodeName + " to " + $item.get(0).nodeName + ": " + e;
+          }
         }
 
         return $item;
