@@ -13,12 +13,16 @@
 (function( $ ) {
   /**
    * Creates a DOM tree from a JsonML object in the provided document.
+   * <p>
+   * Documentation of the format can be found at: <a href="http://jsonml.org/">jsonml.org</a>.
    *
-   * @param jsonML
+   * @example $.jsonml( [ "span", { "class" : "code-example-third" }, "Third" ] )
+   *
+   * @param {Array} jsonML
    *    the JsonML in array format
-   * @param ownerDoc
-   *    the optional document
-   * @return the jQuery object
+   * @param {Object} ownerDoc
+   *    the owner document
+   * @return {Object} the jQuery object
    */
   $.jsonml = function( jsonML, ownerDoc ) {
     if (typeof ownerDoc == "undefined") {
