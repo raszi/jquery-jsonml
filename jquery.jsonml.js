@@ -1,5 +1,5 @@
 /*jslint browser: true */
-/*global goa3jQuery */
+/*global jQuery */
 
 /**
  * This script is extending the jQuery library to handle JsonML array format.
