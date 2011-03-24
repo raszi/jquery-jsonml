@@ -84,4 +84,15 @@ QUnit.test("Colorful Table", function() {
   });
 });
 
+QUnit.test("Script eval", function() {
+  window.foobar = 0;
+  var JsonML = [ "script", { "type": "text/javascript" }, "window.foobar = 1;" ];
+
+  var $c = $("#content").empty();
+
+  $.jsonml(JsonML).appendTo($c);
+
+  QUnit.equal(window.foobar, 1, "Script should be evaluated");
+});
+
 // vim: ai ts=2 sw=2 et:

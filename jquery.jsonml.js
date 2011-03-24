@@ -56,13 +56,23 @@
           start++;
         }
 
-        for (var i = start; i < length; i++) {
-          var $node = $.jsonml(jsonML[i], ownerDoc);
+        var
+          item = $item.get(0),
+          scriptEval = $item.is("script") && !$.support.scriptEval(),
+          ieObject = $.browser.msie && $item.is("object");
 
+        for (var i = start; i < length; i++) {
           try {
-            if ($.browser.msie && $node.is("object")) {
-                var object = $item.get(0);
-                object.innerHTML = object.innerHTML + $node.get(0).outerHTML;
+            if (scriptEval && typeof jsonML[i] == "string") {
+              item.text = jsonML[i];
+              continue;
+            }
+
+            var $node = $.jsonml(jsonML[i], ownerDoc);
+
+            if (ieObject) {
+              var object = $item.get(0);
+              object.innerHTML = object.innerHTML + $node.get(0).outerHTML;
             } else {
               $node.appendTo($item);
             }
